@@ -32,6 +32,7 @@
 	"type": "module",
 	"dependencies": {
 		"@sentry/sveltekit": "^7.101.0",
+		"@supabase/sentry-js-integration": "^0.1.0",
 		"@supabase/ssr": "^0.1.0",
 		"@supabase/supabase-js": "^2.39.6"
 	}

@@ -4,10 +4,15 @@ import { handleErrorWithSentry, sentryHandle } from '@sentry/sveltekit';
 import * as Sentry from '@sentry/sveltekit';
 import { createServerClient } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
+import { SupabaseIntegration } from '@supabase/sentry-js-integration';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 Sentry.init({
 	dsn: 'https://27dbca58093d401f9b18f88c40ec718f@o447951.ingest.sentry.io/4504796902588416',
-	tracesSampleRate: 1.0
+	tracesSampleRate: 1.0,
+	integrations: [
+		new SupabaseIntegration(SupabaseClient, { breadcrumbs: true, errors: true, tracing: true })
+	]
 });
 
 const handleSupabase = (async ({ event, resolve }) => {
